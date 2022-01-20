@@ -127,7 +127,20 @@ input {
   margin-bottom: 20px;
 }
 
+.read-wrapper {
+  display: flex;
+}
+
+#read {
+  margin: 1px 6px 20px 0px;
+}
+
 .submit-btn {
-  align-self: flex-end;
+  /* align-self: flex-end; */
   width: 80px;
+  margin-bottom: 20px;
+}
+
+.validation-message {
+  color: red;
 }

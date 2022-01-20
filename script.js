@@ -103,3 +103,36 @@ window.addEventListener('keydown', (e) => {
 //     newBookOverlay.style.display = 'none';
 //   }
 // });
+
+// collect data from new book form
+
+const submitBtn =  document.querySelector('.submit-btn');
+
+submitBtn.addEventListener('click', () => {
+
+  let validationMessages = document.querySelectorAll('.validation-message');
+  validationMessages.forEach(message => {
+    message.remove();
+  });
+  
+  let title = document.querySelector('#title').value.trim();
+  let author = document.querySelector('#author').value.trim();
+  let pages = parseInt(document.querySelector('#pages').value);
+  let read = document.querySelector('#read').checked;
+
+  if (author === null || author === '') {
+    submitBtn.insertAdjacentHTML('afterend',
+        '<span class="validation-message">Please enter an author.</span>');
+  }
+  if (title === null || title === '') {
+    submitBtn.insertAdjacentHTML('afterend',
+        '<span class="validation-message">Please enter a title.</span>');
+  }
+  if (author !== null && title !== ''
+      && author !== null && author !== '') {
+    let book = new Book(title, author, pages, read);
+    addToLibrary(book);
+    redrawBooks();
+    newBookOverlay.style.display = 'none';
+  }
+});
