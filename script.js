@@ -1,3 +1,5 @@
+// book object constructor
+
 function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
@@ -17,5 +19,18 @@ Book.prototype.changeReadStatus = function () {
   this.read = this.read ? false : true;
 }
 
-const bookOne = new Book('The Hobbit', 'JRR Tolkien', 300, false);
-// console.log(bookOne.info());
+// create sample books
+
+const bookOne = new Book('The Hobbit', 'JRR Tolkien', 366, true);
+const bookTwo = new Book('The Fellowship of the Ring', 'JRR Tolkien', 527, true);
+const bookThree = new Book('The Two Towers', 'JRR Tolkien', 447, false);
+const bookFour = new Book('The Return of the King', 'JRR Tolkien', 385, false);
+
+// add sample books to library
+
+let myLibrary = [];
+myLibrary.push(bookOne, bookTwo, bookThree, bookFour);
+
+function addBookToLibrary() {
+  // do stuff here
+}
