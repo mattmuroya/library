@@ -13,7 +13,7 @@ Book.prototype.info = function () {
       'This book has been read' :
       'This book has not been read';
   return `${this.title} by ${this.author}, ${this.pages} pages. ${read}.`
-}
+};
 
 Book.prototype.changeReadStatus = function () {
   this.read = !this.read;
@@ -44,11 +44,18 @@ function redrawBooks() {
   clearBookshelf();
   myLibrary.forEach((book, i) => {
     let bookCard = document.createElement('div');
+    let read =
+        book.read ?
+        'You have read this book.' :
+        'You have not read this book.';
     let bookMarkup = `
         <h3>${book.title}</h3>
-        <p>${book.info()}</p>
+        <p>By ${book.author}</p>
+        <p>${book.pages} pages</p>
+        <p id="read-status-${i}">${read}</p>
         <button class="read-status-btn" value="${i}">Change Read Status</button>
         <button class="delete-btn" value="${i}">Delete</button>`;
+    console.log(bookMarkup);
     bookCard.className = 'book-card';
     bookCard.id = `book-${i}`;
     bookCard.insertAdjacentHTML('afterbegin', bookMarkup);
@@ -74,11 +81,14 @@ function activateReadStatusBtns() {
   readStatusBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       myLibrary[btn.value].changeReadStatus();
-      let cardText = document.querySelector(`#book-${btn.value} p`);
-      cardText.textContent = myLibrary[btn.value].info();
+      let readText = document.querySelector(`p#read-status-${btn.value}`);
+      readText.textContent =
+          myLibrary[btn.value].read ?
+          'You have read this book.' :
+          'You have not read this book.';
     });
   });
-};
+}
 
 // 'add new book' button and form popup
 
@@ -151,7 +161,7 @@ function clearForm() {
     authorField.value = null;
     pagesField.value = 0;
     readField.checked = false;
-};
+}
 
 // delete button
 
@@ -164,4 +174,4 @@ function activateDeleteBtns() {
       redrawBooks();
     });
   });
-};
+}
