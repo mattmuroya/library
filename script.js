@@ -16,7 +16,7 @@ Book.prototype.info = function () {
 }
 
 Book.prototype.changeReadStatus = function () {
-  this.read = this.read ? false : true;
+  this.read = !this.read;
 }
 
 // addd a book (or array of books) to library
@@ -37,6 +37,24 @@ const bookThree = new Book('The Two Towers', 'JRR Tolkien', 447, false);
 const bookFour = new Book('The Return of the King', 'JRR Tolkien', 385, false);
 
 addToLibrary(bookOne, bookTwo, bookThree, bookFour);
+
+// draw library
+
+const bookshelf = document.querySelector('.bookshelf');
+
+function drawBooks() {
+  myLibrary.forEach(book => {
+    let bookCard = document.createElement('div');
+    let bookMarkup = `
+        <h3>${book.title}</h3>
+        <p>${book.info()}</p>`;
+    bookCard.classList.add('book-card');
+    bookCard.insertAdjacentHTML('afterbegin', bookMarkup);
+    bookshelf.appendChild(bookCard);
+  });
+}
+
+drawBooks();
 
 // 'add new book' button and form popup
 

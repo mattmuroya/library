@@ -11,6 +11,8 @@
  div {
   border: 1px solid black;
  }
+
+ /* basic strucutral elements */
  
  .wrapper {
    display: flex;
@@ -23,7 +25,46 @@
   .footer {
     padding: 20px;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
+
+  /* bookshelf and book cards */
+
+  .bookshelf {
+    display: flex;
+    flex-wrap: wrap;
+    /*border: 1px solid black;*/
+    max-width: 1200px;
+  }
+
+  .book-card {
+    padding: 20px;
+    flex: 0 0 29.33333%;
+    margin: 2%;
+    overflow: hidden;
+  }
+
+  .book-card::before {
+    content: '';
+    float: right;
+    padding-top: 150%; 	/* initial ratio of 1:1*/
+  }
+
+  @media screen and (max-width: 950px) {
+    .book-card {
+      flex: 0 0 46%;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    .book-card {
+      flex: 0 0 96%;
+    }
+  }
+
+  /* 'new book' form overlay and window */
 
   .new-book-overlay {
   display: none;
@@ -45,11 +86,8 @@
   transform: translate(-50%, -50%);
   padding: 20px;
   width: 80%;
-
   display: flex;
   flex-direction: column;
-  
-
 }
 
 .form-header {
