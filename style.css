@@ -30,6 +30,10 @@
     align-items: center;
   }
 
+  .new-book-btn {
+    margin-bottom: 20px;
+  }
+
   /* bookshelf and book cards */
 
   .bookshelf {
@@ -52,16 +56,19 @@
     padding-top: 150%; 	/* initial ratio of 1:1*/
   }
 
-  @media screen and (max-width: 950px) {
+  @media screen and (max-width: 1000px) {
     .book-card {
       flex: 0 0 46%;
     }
   }
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 650px) {
+    .bookshelf {
+      max-width: 400px;
+    }
     .book-card {
       flex: 0 0 96%;
-    }
+    } 
   }
 
   /* 'new book' form overlay and window */
