@@ -23,20 +23,16 @@ Book.prototype.changeReadStatus = function () {
 
 let myLibrary = [];
 
-function addToLibrary(...books) {
-  for (let book of books) {
-    myLibrary.push(book);
-  }
-};
+function addToLibrary(book) {
+  myLibrary.unshift(book);
+}
 
 // create and add sample books
 
-const bookOne = new Book('The Hobbit', 'JRR Tolkien', 366, true);
-const bookTwo = new Book('The Fellowship of the Ring', 'JRR Tolkien', 527, true);
-const bookThree = new Book('The Two Towers', 'JRR Tolkien', 447, false);
-const bookFour = new Book('The Return of the King', 'JRR Tolkien', 385, false);
-
-addToLibrary(bookOne, bookTwo, bookThree, bookFour);
+addToLibrary(new Book('The Hobbit', 'JRR Tolkien', 366, true));
+addToLibrary(new Book('The Fellowship of the Ring', 'JRR Tolkien', 527, true));
+addToLibrary(new Book('The Two Towers', 'JRR Tolkien', 447, false));
+addToLibrary(new Book('The Return of the King', 'JRR Tolkien', 385, false));
 
 // draw library
 
