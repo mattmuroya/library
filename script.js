@@ -42,19 +42,42 @@ addToLibrary(bookOne, bookTwo, bookThree, bookFour);
 
 const bookshelf = document.querySelector('.bookshelf');
 
-function drawBooks() {
-  myLibrary.forEach(book => {
+function redrawBooks() {
+  clearBookshelf();
+  myLibrary.forEach((book, i) => {
     let bookCard = document.createElement('div');
     let bookMarkup = `
         <h3>${book.title}</h3>
-        <p>${book.info()}</p>`;
-    bookCard.classList.add('book-card');
+        <p>${book.info()}</p>
+        <button class="read-status-btn" value="${i}">Change Read Status</button>`;
+    bookCard.className = 'book-card';
     bookCard.insertAdjacentHTML('afterbegin', bookMarkup);
     bookshelf.appendChild(bookCard);
   });
+  activateReadStatusBtns();
+}
+redrawBooks();
+
+// clear all books
+
+function clearBookshelf() {
+  const allCards = bookshelf.querySelectorAll('.book-card');
+  allCards.forEach(card => {
+    card.remove();
+  });
 }
 
-drawBooks();
+// function to change book read status
+
+function activateReadStatusBtns() {
+  let readStatusBtns = bookshelf.querySelectorAll('.read-status-btn');
+  readStatusBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      myLibrary[btn.value].changeReadStatus();
+      redrawBooks();
+    });
+  });
+};
 
 // 'add new book' button and form popup
 
