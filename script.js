@@ -55,7 +55,6 @@ function redrawBooks() {
         <p id="read-status-${i}">${read}</p>
         <button class="read-status-btn" value="${i}">Change Read Status</button>
         <button class="delete-btn" value="${i}">Delete</button>`;
-    console.log(bookMarkup);
     bookCard.className = 'book-card';
     bookCard.id = `book-${i}`;
     bookCard.insertAdjacentHTML('afterbegin', bookMarkup);
@@ -170,7 +169,6 @@ function activateDeleteBtns() {
   deleteBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       myLibrary.splice(btn.value, 1);
-      console.log('deleting');
       redrawBooks();
     });
   });
