@@ -90,21 +90,20 @@ newBookBtn.addEventListener('click', () => {
 
 closeBtn.addEventListener('click', () => {
   newBookOverlay.style.display = 'none';
+  clearForm();
 });
 
 window.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     newBookOverlay.style.display = 'none';
+    clearForm();
   }
 });
 
-// window.addEventListener('click', (e) => {
-//   if (e.target === newBookOverlay) {
-//     newBookOverlay.style.display = 'none';
-//   }
-// });
-
-// collect data from new book form
+const titleField = document.querySelector('#title');
+const authorField = document.querySelector('#author');
+const pagesField = document.querySelector('#pages');
+const readField = document.querySelector('#read');
 
 const submitBtn =  document.querySelector('.submit-btn');
 
@@ -114,25 +113,38 @@ submitBtn.addEventListener('click', () => {
   validationMessages.forEach(message => {
     message.remove();
   });
-  
-  let title = document.querySelector('#title').value.trim();
-  let author = document.querySelector('#author').value.trim();
-  let pages = parseInt(document.querySelector('#pages').value);
-  let read = document.querySelector('#read').checked;
 
-  if (author === null || author === '') {
+  let titleValue = title.value.trim();
+  let authorValue = author.value.trim();
+  let pagesValue = pages.value;
+  let readChecked = read.checked;
+
+  if (pagesValue === null || pagesValue === '') {
+    submitBtn.insertAdjacentHTML('afterend',
+        '<span class="validation-message">Please enter number of pages.</span>');
+  }
+  if (authorValue === null || authorValue === '') {
     submitBtn.insertAdjacentHTML('afterend',
         '<span class="validation-message">Please enter an author.</span>');
   }
-  if (title === null || title === '') {
+  if (titleValue === null || titleValue === '') {
     submitBtn.insertAdjacentHTML('afterend',
         '<span class="validation-message">Please enter a title.</span>');
   }
-  if (author !== null && title !== ''
-      && author !== null && author !== '') {
-    let book = new Book(title, author, pages, read);
+  if (pagesValue !== null && pagesValue!== ''
+      && authorValue !== null && authorValue !== ''
+      && titleValue !== null && titleValue !== '') {
+    let book = new Book(titleValue, authorValue, parseInt(pagesValue), readChecked);
     addToLibrary(book);
     redrawBooks();
-    newBookOverlay.style.display = 'none';
+    clearForm();
   }
 });
+
+function clearForm() {
+  newBookOverlay.style.display = 'none';
+    titleField.value = null;
+    authorField.value = null;
+    pagesField.value = 0;
+    readField.checked = false;
+};
