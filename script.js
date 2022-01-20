@@ -37,3 +37,29 @@ const bookThree = new Book('The Two Towers', 'JRR Tolkien', 447, false);
 const bookFour = new Book('The Return of the King', 'JRR Tolkien', 385, false);
 
 addToLibrary(bookOne, bookTwo, bookThree, bookFour);
+
+// 'add new book' button and form popup
+
+const newBookBtn = document.querySelector('.new-book-btn');
+const newBookOverlay = document.querySelector('.new-book-overlay');
+const closeBtn = document.querySelector('.close-btn');
+
+newBookBtn.addEventListener('click', () => {
+  newBookOverlay.style.display = 'block';
+});
+
+closeBtn.addEventListener('click', () => {
+  newBookOverlay.style.display = 'none';
+});
+
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    newBookOverlay.style.display = 'none';
+  }
+});
+
+window.addEventListener('click', (e) => {
+  if (e.target === newBookOverlay) {
+    newBookOverlay.style.display = 'none';
+  }
+});
