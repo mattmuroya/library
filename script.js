@@ -27,16 +27,18 @@ function addToLibrary(book) {
   myLibrary.unshift(book);
 }
 
-// create and add sample books
+// create bookshelf and add sample books
+
+const bookshelf = document.querySelector('.bookshelf');
 
 addToLibrary(new Book('The Hobbit', 'JRR Tolkien', 366, true));
 addToLibrary(new Book('The Fellowship of the Ring', 'JRR Tolkien', 527, true));
 addToLibrary(new Book('The Two Towers', 'JRR Tolkien', 447, false));
 addToLibrary(new Book('The Return of the King', 'JRR Tolkien', 385, false));
 
-// draw library
+redrawBooks();
 
-const bookshelf = document.querySelector('.bookshelf');
+// draw library
 
 function redrawBooks() {
   clearBookshelf();
@@ -47,12 +49,12 @@ function redrawBooks() {
         <p>${book.info()}</p>
         <button class="read-status-btn" value="${i}">Change Read Status</button>`;
     bookCard.className = 'book-card';
+    bookCard.id = `book-${i}`;
     bookCard.insertAdjacentHTML('afterbegin', bookMarkup);
     bookshelf.appendChild(bookCard);
   });
   activateReadStatusBtns();
 }
-redrawBooks();
 
 // clear all books
 
@@ -70,7 +72,8 @@ function activateReadStatusBtns() {
   readStatusBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       myLibrary[btn.value].changeReadStatus();
-      redrawBooks();
+      let cardText = document.querySelector(`#book-${btn.value} p`);
+      cardText.textContent = myLibrary[btn.value].info();
     });
   });
 };
