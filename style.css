@@ -1,79 +1,80 @@
- html,
- body {
-   margin: 0;
-   padding: 0;
- }
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
 
- * {
-   box-sizing: border-box;
- }
+* {
+  box-sizing: border-box;
+}
 
- div {
+/* div {
+border: 1px solid black;
+} */
+
+/* basic strucutral elements */
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header,
+.body,
+.footer {
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.new-book-btn {
+  margin-bottom: 20px;
+}
+
+/* bookshelf and book cards */
+
+.bookshelf {
+  display: flex;
+  flex-wrap: wrap;
+  /*border: 1px solid black;*/
+  max-width: 1200px;
+}
+
+.book-card {
   border: 1px solid black;
- }
+  padding: 20px;
+  flex: 0 0 29.33333%;
+  margin: 2%;
+  overflow: hidden;
+}
 
- /* basic strucutral elements */
- 
- .wrapper {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-  }
+.book-card::before {
+  content: '';
+  float: right;
+  padding-top: 150%; 	/* initial ratio of 1:1*/
+}
 
-  .header,
-  .body,
-  .footer {
-    padding: 20px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .new-book-btn {
-    margin-bottom: 20px;
-  }
-
-  /* bookshelf and book cards */
-
-  .bookshelf {
-    display: flex;
-    flex-wrap: wrap;
-    /*border: 1px solid black;*/
-    max-width: 1200px;
-  }
-
+@media screen and (max-width: 1000px) {
   .book-card {
-    padding: 20px;
-    flex: 0 0 29.33333%;
-    margin: 2%;
-    overflow: hidden;
+    flex: 0 0 46%;
   }
+}
 
-  .book-card::before {
-    content: '';
-    float: right;
-    padding-top: 150%; 	/* initial ratio of 1:1*/
+@media screen and (max-width: 650px) {
+  .bookshelf {
+    max-width: 400px;
   }
+  .book-card {
+    flex: 0 0 96%;
+  } 
+}
 
-  @media screen and (max-width: 1000px) {
-    .book-card {
-      flex: 0 0 46%;
-    }
-  }
+/* 'new book' form overlay and window */
 
-  @media screen and (max-width: 650px) {
-    .bookshelf {
-      max-width: 400px;
-    }
-    .book-card {
-      flex: 0 0 96%;
-    } 
-  }
-
-  /* 'new book' form overlay and window */
-
-  .new-book-overlay {
+.new-book-overlay {
   display: none;
   position: fixed;
   z-index: 1;
@@ -95,12 +96,17 @@
   width: 80%;
   display: flex;
   flex-direction: column;
+  
 }
 
 .form-header {
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-start;
+}
+
+h3 {
+  margin-bottom: 20px;
 }
 
 .close-btn {
@@ -111,4 +117,17 @@
   width: 24px;
   height: 24px;
   cursor: pointer;
+}
+
+label {
+  margin-bottom: 6px;
+}
+
+input {
+  margin-bottom: 20px;
+}
+
+.submit-btn {
+  align-self: flex-end;
+  width: 80px;
 }

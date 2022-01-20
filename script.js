@@ -98,8 +98,8 @@ window.addEventListener('keydown', (e) => {
   }
 });
 
-window.addEventListener('click', (e) => {
-  if (e.target === newBookOverlay) {
-    newBookOverlay.style.display = 'none';
-  }
-});
+// window.addEventListener('click', (e) => {
+//   if (e.target === newBookOverlay) {
+//     newBookOverlay.style.display = 'none';
+//   }
+// });
