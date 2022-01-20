@@ -47,13 +47,15 @@ function redrawBooks() {
     let bookMarkup = `
         <h3>${book.title}</h3>
         <p>${book.info()}</p>
-        <button class="read-status-btn" value="${i}">Change Read Status</button>`;
+        <button class="read-status-btn" value="${i}">Change Read Status</button>
+        <button class="delete-btn" value="${i}">Delete</button>`;
     bookCard.className = 'book-card';
     bookCard.id = `book-${i}`;
     bookCard.insertAdjacentHTML('afterbegin', bookMarkup);
     bookshelf.appendChild(bookCard);
   });
   activateReadStatusBtns();
+  activateDeleteBtns();
 }
 
 // clear all books
@@ -99,6 +101,8 @@ window.addEventListener('keydown', (e) => {
     clearForm();
   }
 });
+
+// submit new book
 
 const titleField = document.querySelector('#title');
 const authorField = document.querySelector('#author');
@@ -147,4 +151,17 @@ function clearForm() {
     authorField.value = null;
     pagesField.value = 0;
     readField.checked = false;
+};
+
+// delete button
+
+function activateDeleteBtns() {
+  let deleteBtns = bookshelf.querySelectorAll('.delete-btn');
+  deleteBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      myLibrary.splice(btn.value, 1);
+      console.log('deleting');
+      redrawBooks();
+    });
+  });
 };
