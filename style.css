@@ -30,6 +30,15 @@ body:before {
 	background: rgba(255, 255, 255, 0.6);
 }
 
+button {
+  border: none;
+  border-radius: 5px;
+  color: #444;
+  background-color: #ccc;
+  height: 24px;
+  font-family: sans-serif;
+}
+
 /* basic strucutral elements */
 
 .wrapper {
@@ -50,6 +59,8 @@ body:before {
 
 .new-book-btn {
   margin-bottom: 20px;
+  height: 42px;
+  font-size: 16px;
 }
 
 /* bookshelf and book cards */
@@ -140,7 +151,17 @@ h1 {
   justify-content: flex-start;
 }
 
+.new-book-form h3 {
+  color: #444;
+}
+
+.new-book-form label {
+  color: #999;
+  font-family: sans-serif;
+}
+
 .close-btn {
+  border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -148,6 +169,10 @@ h1 {
   width: 24px;
   height: 24px;
   cursor: pointer;
+}
+
+.close-btn:hover {
+  background-color: #ccc;
 }
 
 label {
