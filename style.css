@@ -1,16 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Luxurious+Roman&display=swap');
+
 html,
 body {
   margin: 0;
   padding: 0;
+  font-family: 'Luxurious Roman', cursive;
 }
 
 * {
   box-sizing: border-box;
 }
 
-/* div {
-border: 1px solid black;
-} */
+body {
+  width: 100vw;
+  height: 100vh;
+  background-image: url(https://images.unsplash.com/photo-1495195129352-aeb325a55b65?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1752&q=80);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+body:before {
+	content: '';
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	z-index: -1;
+	background: rgba(255, 255, 255, 0.6);
+}
 
 /* basic strucutral elements */
 
@@ -39,23 +57,34 @@ border: 1px solid black;
 .bookshelf {
   display: flex;
   flex-wrap: wrap;
-  /*border: 1px solid black;*/
   width: 100%;
   max-width: 1200px;
 }
 
 .book-card {
-  border: 1px solid black;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
   padding: 20px;
   flex: 0 0 29.33333%;
   margin: 2%;
   overflow: hidden;
 }
 
+.book-card h3 {
+  color: #444;
+  margin-bottom: 20px;
+}
+
+.book-card p {
+  font-family: sans-serif;
+  color: #999;
+}
+
 .book-card::before {
   content: '';
   float: right;
-  padding-top: 150%; 	/* initial ratio of 1:1*/
+  padding-top: 80%; 	/* initial ratio of 1:1*/
 }
 
 @media screen and (max-width: 1000px) {
@@ -105,10 +134,6 @@ border: 1px solid black;
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-start;
-}
-
-h3 {
-  margin-bottom: 20px;
 }
 
 .close-btn {
