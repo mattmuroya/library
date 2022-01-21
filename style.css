@@ -54,6 +54,10 @@ body:before {
 
 /* bookshelf and book cards */
 
+h1 {
+  color: #444;
+}
+
 .bookshelf {
   display: flex;
   flex-wrap: wrap;
