@@ -16,6 +16,17 @@
     <div class="body">
 
       <button class="new-book-btn">Add New Book</button>
+      <form id="dropdown-form">
+      <select title="sort" name="sort" id="sort">
+        <option value="" selected>Sort books by...</option>
+        <option value="date">Last added (newest to oldest)</option>
+        <option value="date-reverse">Last added (oldest to newest)</option>
+        <option value="title">Title (ascending)</option>
+        <option value="title-reverse">Title (descending)</option>
+        <option value="author">Author (ascending)</option>
+        <option value="author-reverse">Author (descending)</option>
+      </select>
+      </form>
       <div class="bookshelf"></div>
       <div class="new-book-overlay">
         <div class="new-book-form">

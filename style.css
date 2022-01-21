@@ -63,6 +63,16 @@ button {
   font-size: 16px;
 }
 
+#sort {
+  border: none;
+  border-radius: 5px;
+  color: #444;
+  background-color: #ccc;
+  margin-bottom: 20px;
+  height: 42px;
+  font-size: 16px;
+}
+
 /* bookshelf and book cards */
 
 h1 {
