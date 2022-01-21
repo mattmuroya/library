@@ -27,11 +27,11 @@ function sortByDate(library) {
 }
 
 function sortByTitle(library) {
-  return library.sort((a, b) => a.title > b.title ? 1 : -1);
+  return library.sort((a, b) => a.title.toLowerCase() > b.title.toLowerCase() ? 1 : -1);
 }
 
 function sortByAuthor(library) {
-  return library.sort((a, b) => a.author > b.author ? 1 : -1);
+  return library.sort((a, b) => a.author.toLowerCase() > b.author.toLowerCase() ? 1 : -1);
 }
 
 const dropdownForm = document.querySelector('#dropdown-form')
