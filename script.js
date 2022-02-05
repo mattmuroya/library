@@ -1,15 +1,30 @@
 // book object constructor
 
-function Book(title, author, pages, read,) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read; // boolean
-  this['date added'] = new Date();
-}
+// function Book(title, author, pages, read,) {
+//   this.title = title;
+//   this.author = author;
+//   this.pages = pages;
+//   this.read = read; // boolean
+//   this['date added'] = new Date();
+// }
 
-Book.prototype.changeReadStatus = function () {
-  this.read = !this.read;
+// Book.prototype.changeReadStatus = function () {
+//   this.read = !this.read;
+// }
+
+// constructor refactored as a class
+
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read; // boolean
+    this['date added'] = new Date();
+  }
+  changeReadStatus() {
+    this.read = !this.read;
+  }
 }
 
 // add a book (or array of books) to library
